@@ -1,0 +1,11 @@
+<mat-card class="card">
+  <h1>Register</h1>
+  <p>Please enter following data for your account</p>
+
+  <app-register-form (registerEvent)="register($event)"></app-register-form>
+
+  <p>
+    Already have username and password?
+    <a [routerLink]="'/auth/login'">Login</a>
+  </p>
+</mat-card>

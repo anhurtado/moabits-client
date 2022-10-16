@@ -1,0 +1,46 @@
+<form [formGroup]="loginForm" novalidate>
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Username</mat-label>
+    <input type="text" matInput formControlName="username" />
+
+    <mat-error *ngIf="f['username'].errors && f['username'].touched">
+      <label *ngIf="f['username'].errors.required">
+        The field is required
+      </label>
+      <label *ngIf="f['username'].errors.minlength">
+        The field must be at least 4 characters long
+      </label>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      formControlName="password"
+    />
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="f['password'].errors && f['password'].touched">
+      <label *ngIf="f['password'].errors.required">
+        The field is required
+      </label>
+      <label *ngIf="f['password'].errors.minlength">
+        The field must be at least 4 characters long
+      </label>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    color="accent"
+    class="w-100"
+    [disabled]="loginForm.invalid"
+    (click)="login($event)"
+  >
+    LOGIN
+  </button>
+</form>
