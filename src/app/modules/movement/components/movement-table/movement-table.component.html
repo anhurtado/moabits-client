@@ -1,4 +1,5 @@
 <section class="mat-elevation-z8">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -40,10 +41,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <!--mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
-  </mat-paginator-->
+  <mat-paginator
+    #paginator
+    [length]="totalRows"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageChanged($event)"
+  ></mat-paginator>
 </section>

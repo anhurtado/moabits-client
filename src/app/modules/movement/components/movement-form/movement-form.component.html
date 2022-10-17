@@ -21,9 +21,14 @@
   <button
     mat-flat-button
     color="primary"
+    class="form-style"
     [disabled]="searchForm.invalid"
     (click)="search()"
   >
     SEARCH
   </button>
+  <button mat-flat-button color="primary" class="form-style" (click)="upload()">
+    UPLOAD CSV FILE
+  </button>
+  <button mat-flat-button color="accent" (click)="logout()">LOGOUT</button>
 </form>
