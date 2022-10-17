@@ -19,7 +19,7 @@ export class RequestInterceptor implements HttpInterceptor {
         setHeaders: {
           Accept: '*/*',
           'Content-Type': 'application/json; charset=utf-8',
-          Authorization: token,
+          token: token,
         },
         body: request.body,
       });

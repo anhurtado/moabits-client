@@ -1,1 +1,17 @@
-<p>movement-index works!</p>
+<mat-card class="card">
+  <h1>Movements</h1>
+  <p>Please select a client and range date for see balance and movements</p>
+
+  <app-movement-form
+    [clients]="clients"
+    (searchEvent)="fetchMovements($event); fetchBalance($event)"
+  ></app-movement-form>
+
+  <app-movement-balance [balance]="balance"></app-movement-balance>
+
+  <app-movement-table
+    *ngIf="movements.length > 0"
+    [movements]="movements"
+  ></app-movement-table>
+  <p *ngIf="movements.length === 0">No records</p>
+</mat-card>

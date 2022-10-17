@@ -1,0 +1,29 @@
+<form [formGroup]="searchForm" novalidate>
+  <mat-form-field appearance="fill" class="form-style">
+    <mat-label>Select a client</mat-label>
+    <mat-select formControlName="clientId">
+      <mat-option *ngFor="let item of clients" [value]="item.id">
+        {{ item.companyName }} - {{ item.documentNumber }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-style">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" formControlName="fromDate" />
+      <input matEndDate placeholder="End date" formControlName="toDate" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="searchForm.invalid"
+    (click)="search()"
+  >
+    SEARCH
+  </button>
+</form>
