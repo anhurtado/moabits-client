@@ -54,6 +54,7 @@ export class MovementIndexComponent implements OnInit {
     this.searchModel = searchModel;
     this.movementService.list(searchModel).subscribe({
       next: (rm: any) => {
+        this.movements = [];
         this.movements = rm.items;
         this.balance = rm.balance;
         this.total = rm.total;
@@ -74,10 +75,6 @@ export class MovementIndexComponent implements OnInit {
         });
       },
     });
-  }
-
-  public uploadCsvFile(): void {
-    console.log('uploadCsvFile');
   }
 
   public logout(): void {

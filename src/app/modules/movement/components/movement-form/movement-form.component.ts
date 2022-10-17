@@ -11,7 +11,6 @@ import { SearchModel } from 'src/app/core/models/search.model';
 export class MovementFormComponent implements OnInit {
   @Input() clients: ClientModel[] = [];
   @Output() searchEvent = new EventEmitter<SearchModel>();
-  @Output() uploadEvent = new EventEmitter<boolean>();
   @Output() logoutEvent = new EventEmitter<boolean>();
   public searchForm!: FormGroup;
 
@@ -30,7 +29,7 @@ export class MovementFormComponent implements OnInit {
       clientId: ['', Validators.required],
       fromDate: [''],
       toDate: [''],
-      limit: [4],
+      limit: [10],
       page: [1],
     });
   }
@@ -38,10 +37,6 @@ export class MovementFormComponent implements OnInit {
   public search(): void {
     const searchModel: SearchModel = this.searchForm.value;
     this.searchEvent.emit(searchModel);
-  }
-
-  public upload(): void {
-    this.uploadEvent.emit(true);
   }
 
   public logout(): void {

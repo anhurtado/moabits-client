@@ -13,7 +13,12 @@ export class MovementService {
     if (searchModel.fromDate === '' && searchModel.toDate === '') {
       params = new HttpParams()
         .set('clientId', searchModel.clientId)
-        .set('limit', searchModel.limit)
+        .set(
+          'limit',
+          searchModel.page === 1
+            ? searchModel.limit + 10
+            : searchModel.limit * searchModel.page
+        )
         .set('page', searchModel.page);
     } else {
       params = new HttpParams()

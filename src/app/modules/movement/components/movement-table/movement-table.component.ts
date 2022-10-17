@@ -1,4 +1,3 @@
-import { ParsedVariable } from '@angular/compiler';
 import {
   AfterViewInit,
   Component,
@@ -12,7 +11,6 @@ import {
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MovementModel } from 'src/app/core/models/movement.model';
-import { SearchModel } from 'src/app/core/models/search.model';
 
 @Component({
   selector: 'app-movement-table',
@@ -24,11 +22,11 @@ export class MovementTableComponent
 {
   @Output() newPage = new EventEmitter<number>();
   @Input() movements: MovementModel[] = [];
-  public movementList: MovementModel[] = [];
   @Input() totalRows: number = 0;
-  public pageSize: number = 0;
+  public movementList: MovementModel[] = [];
+  public pageSize: number = 10;
   public currentPage: number = 0;
-  public pageSizeOptions: number[] = [2];
+  public pageSizeOptions: number[] = [10];
   public isLoading: boolean = false;
   public displayedColumns: string[] = [
     'id',
